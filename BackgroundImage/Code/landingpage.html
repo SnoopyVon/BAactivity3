@@ -11,6 +11,12 @@
 </head>
 <body>
 
+  <script>
+    if (sessionStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "loginpage.html";
+    }
+  </script>
+
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
     <div class="container-fluid px-5">
@@ -32,7 +38,7 @@
   <section id="hero" class="container-fluid px-5 py-5 hero-section">
     <div class="row align-items-center">
       <div class="col-lg-6">
-        <h1 class="hero-heading">Every eye has an axis.<br>We build the frame around yours.</h1>
+        <h1 id="welcomeMessage" class="hero-heading">Welcome!</h1>
         <p class="hero-text">
           Meridian is an independent optical studio. Each pair starts with your
           prescription's exact axis and curvature, not a template — so the lens
@@ -144,5 +150,9 @@
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const username = sessionStorage.getItem("loggedInUsername") || "Guest";
+    document.getElementById("welcomeMessage").textContent = "Welcome, " + username + "!";
+  </script>
 </body>
 </html>
